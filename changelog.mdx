@@ -1,0 +1,140 @@
+---
+title: Changelog
+description: Stay updated with the latest releases, bug fixes, and new features added to Market Trak Pro.
+---
+
+## Latest Releases
+
+<Callout kind="info">
+  Market Trak Pro updates automatically in your dashboard. Check your version in the settings panel to ensure you have the latest features.
+</Callout>
+
+Track all changes to report generation, social sharing, lead capture, and more. Releases occur bi-weekly with major versions every quarter.
+
+<Columns cols={3}>
+  <Card title="New Features" icon="zap" href="#new-features">
+    Discover powerful additions that expand your market authority.
+  </Card>
+  <Card title="Bug Fixes" icon="check-circle" href="#bug-fixes">
+    Reliability improvements for seamless daily use.
+  </Card>
+  <Card title="Roadmap" icon="map" href="#roadmap">
+    What's coming next to supercharge your leads.
+  </Card>
+</Columns>
+
+## v1.3.0 - Enhanced Report Generation
+
+<Update label="2024-10-15" description="v1.3.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added hyper-local postcode-level data breakdowns in Seller's Guides
+- New Market Intelligence report format with competitor analysis
+- Live UK property data now includes sold prices and time-on-market metrics
+
+## Improvements
+
+- Report generation speed increased by 40% with optimized data pipelines
+- Custom branding templates now support your logo and brand colors like `#3B82F6`
+
+## Bug Fixes
+
+- Fixed occasional data staleness in automated updates
+- Resolved PDF export issues on high-resolution reports
+
+</Update>
+
+## v1.2.0 - Social Sharing & Leads
+
+<Update label="2024-09-20" description="v1.2.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- One-click social posts from any report directly to LinkedIn, Facebook, and Twitter
+- Embedded lead capture forms in shared reports for instant seller inquiries
+- Auto-scheduling for weekly market update posts
+
+## Improvements
+
+- Social previews now generate eye-catching thumbnails with your branding
+- Lead notifications integrate with your CRM via webhook to `https://your-webhook-url.com/webhook`
+
+## Bug Fixes
+
+- Fixed sharing link expiration for public reports
+- Corrected mobile preview rendering in social platforms
+
+</Update>
+
+## v1.1.0 - Core Stability
+
+<Update label="2024-08-10" description="v1.1.0" tags={["improvement", "bugfix"]}>
+
+## New Features
+
+- Dashboard analytics for tracking report views and lead conversions
+- Bulk report generation for multiple postcodes
+
+## Improvements
+
+- UI refresh with faster navigation and dark mode support
+- Email templates for sharing reports with clients
+
+## Bug Fixes
+
+- Addressed authentication token refresh issues
+- Fixed chart rendering in Data Sheets on Safari
+
+</Update>
+
+## Upcoming Features
+
+<Expandable title="Roadmap Preview" default-open="true">
+
+<Tabs>
+  <Tab title="Q4 2024" icon="calendar">
+    - AI-powered content suggestions for social posts
+    - Integration with popular UK CRMs like Reapit and Alto
+  </Tab>
+  <Tab title="Q1 2025" icon="rocket">
+    - Video report summaries for TikTok and Instagram Reels
+    - Advanced lead scoring based on market trends
+  </Tab>
+</Tabs>
+
+<Callout kind="tip">
+  Suggest features via the feedback form in your dashboard.
+</Callout>
+
+</Expandable>
+
+## Check Your Version
+
+<Steps>
+  <Step title="Access Settings" icon="settings">
+    Log in to `https://dashboard.marketrak.pro` and navigate to Account > Settings.
+  </Step>
+  <Step title="View Updates" icon="info">
+    Scroll to the Version section to see your current release and changelog link.
+  </Step>
+  <Step title="Enable Notifications" icon="bell">
+    Turn on email alerts for new major releases.
+  </Step>
+</Steps>
+
+<codegroup tabs="Dashboard CLI">
+````bash
+# Check version via dashboard API
+curl -H "Authorization: Bearer YOUR_TOKEN" \
+  https://api.example.com/v1/version
+````
+````javascript
+// Fetch latest version info
+const response = await fetch('https://api.example.com/v1/version', {
+  headers: { Authorization: `Bearer ${YOUR_TOKEN}` }
+});
+const version = await response.json();
+console.log(version.current);
+````
+</codegroup>

@@ -1,0 +1,145 @@
+---
+title: Integrations and Connections
+description: Connect Market Trak Pro with social media, email tools, and other services to streamline your workflow and expand reach.
+---
+
+## Overview
+
+Market Trak Pro offers seamless integrations to help you share market reports, automate notifications, and export data effortlessly. Connect to social platforms for one-click posting, set up webhooks for real-time lead alerts, integrate with email services, and export insights to your favorite tools. These connections save time and amplify your reach as a UK estate agent.
+
+<Callout kind="tip">
+Review your integration permissions and test connections in a staging environment before going live.
+</Callout>
+
+## One-Click Social Media Sharing
+
+Share your hyper-local market reports directly to social platforms with one click from the Market Trak Pro dashboard.
+
+<Columns cols={3}>
+  <Card title="X (Twitter)" icon="twitter" href="https://dashboard.marketrak.pro/integrations/twitter">
+    Post concise market updates and Seller's Guides to engage local followers.
+  </Card>
+  <Card title="LinkedIn" icon="linkedin" href="https://dashboard.marketrak.pro/integrations/linkedin">
+    Share professional Data Sheets and build authority with estate agent networks.
+  </Card>
+  <Card title="Facebook" icon="facebook" href="https://dashboard.marketrak.pro/integrations/facebook">
+    Target community groups with visually rich Market Intelligence reports.
+  </Card>
+</Columns>
+
+<Tabs>
+  <Tab title="Connect X (Twitter)" icon="twitter">
+    1. Navigate to `https://dashboard.marketrak.pro/integrations/twitter`.
+    2. Authorize with your X account.
+    3. Select report types to auto-share.
+
+    <CodeGroup tabs="cURL,JavaScript">
+    ````bash
+    curl -X POST https://api.marketrak.pro/v1/integrations/twitter \
+      -H "Authorization: Bearer YOUR_API_KEY" \
+      -d '{"report_id": "report-123", "text": "Latest market insights!"}'
+    ````
+    ````javascript
+    const response = await fetch('https://api.marketrak.pro/v1/integrations/twitter', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer YOUR_API_KEY' },
+      body: JSON.stringify({ report_id: 'report-123', text: 'Latest market insights!' })
+    });
+    ````
+    </CodeGroup>
+  </Tab>
+  <Tab title="Connect LinkedIn" icon="linkedin">
+    Follow similar steps at `https://dashboard.marketrak.pro/integrations/linkedin`.
+  </Tab>
+</Tabs>
+
+## Webhooks for Lead Notifications
+
+Set up webhooks to receive instant notifications when new leads engage with your shared reports.
+
+### Setup Steps
+
+<Steps>
+  <Step title="Create Webhook" icon="settings">
+    Go to `https://dashboard.marketrak.pro/webhooks/new`.
+
+    Configure the URL where Market Trak Pro sends events.
+  </Step>
+  <Step title="Select Events" icon="zap">
+    Choose events like `lead.created` or `report.shared`.
+  </Step>
+  <Step title="Test and Save" icon="check-circle">
+    Send a test payload and verify receipt.
+  </Step>
+</Steps>
+
+<ParamField header="X-MarketTrak-Signature" param-type="string" required="true">
+  HMAC signature for payload verification.
+</ParamField>
+
+<ParamField body="event" param-type="string" required="true">
+  Event type, e.g., `lead.created`.
+</ParamField>
+
+<ParamField body="lead_id" param-type="string">
+  Unique ID of the new lead.
+</ParamField>
+
+Example payload:
+
+<Response tabs="200">
+```json
+{
+  "event": "lead.created",
+  "lead_id": "lead-456",
+  "email": "buyer@example.com",
+  "report_id": "report-123",
+  "timestamp": "2024-10-15T10:30:00Z"
+}
+```
+</Response>
+
+## Email Marketing Integrations
+
+Connect Market Trak Pro to popular email services to automate newsletters with market data.
+
+| Service     | Setup Method          | Key Benefit                  |
+|-------------|-----------------------|------------------------------|
+| Mailchimp  | OAuth via dashboard  | Sync leads and embed reports |
+| Klaviyo    | API key integration  | Personalized market alerts   |
+| ActiveCampaign | Webhook forwarding | Automated drip campaigns    |
+
+<Expandable title="Mailchimp Setup" default-open="true">
+  1. Generate an API key in Mailchimp.
+  2. Enter it at `https://dashboard.marketrak.pro/integrations/mailchimp`.
+  3. Map report data to audience fields.
+
+  ```javascript
+  // Example sync call
+  await fetch('https://api.marketrak.pro/v1/integrations/mailchimp/sync', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer YOUR_API_KEY' },
+    body: JSON.stringify({
+      list_id: 'your-list-id',
+      leads: [{ email: 'agent@example.com', data: 'Market report' }]
+    })
+  });
+  ```
+</Expandable>
+
+## Export Data for Third-Party Tools
+
+Export CSV or JSON data for analysis in tools like Google Sheets, Excel, or BI platforms.
+
+```bash
+# Download CSV export
+curl "https://api.marketrak.pro/v1/exports/reports?format=csv&date_from=2024-01-01" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -o market-data.csv
+```
+
+Use the exported data to fuel custom dashboards or CRM imports.
+
+<Callout kind="success">
+These integrations help you scale your local market authority without manual effort.
+</Callout>
