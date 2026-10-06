@@ -1,0 +1,179 @@
+---
+title: Integrations
+description: How to connect BosOn with external tools and services to import and sync AI-generated content.
+---
+
+## Overview
+
+BosOn integrates seamlessly with popular tools to bring your AI-generated images, videos, and assets into your library. Connect Google Drive for bulk imports, pull history from ChatGPT and Gemini, sync desktop downloads, and more. These integrations keep everything organized in one place.
+
+<Columns cols={3}>
+  <Card title="Google Drive" icon="cloud" href="#google-drive">
+    Import folders and files automatically.
+  </Card>
+  <Card title="ChatGPT & Gemini" icon="message-circle" href="#chatgpt-gemini">
+    Sync conversation history and attachments.
+  </Card>
+  <Card title="Desktop Folders" icon="folder" href="#desktop">
+    Watch downloads and local directories.
+  </Card>
+  <Card title="Email & WhatsApp" icon="mail" href="#email-whatsapp">
+    Pull attachments from inboxes and chats.
+  </Card>
+  <Card title="Higgsfield Sync" icon="zap" href="#higgsfield">
+    Direct integration with Higgsfield AI tools.
+  </Card>
+</Columns>
+
+<Callout kind="tip">
+  Start with one integration to test the flow. BosOn respects your privacy and only accesses specified folders or histories.
+</Callout>
+
+## Google Drive
+
+Connect your Google Drive to import AI-generated content from specific folders.
+
+<Tabs>
+  <Tab title="Web Setup" icon="globe">
+    <Steps>
+      <Step title="Authorize BosOn" icon="key">
+        Visit `https://dashboard.getboson.app/integrations/drive` and sign in with Google.
+      </Step>
+      <Step title="Select Folders" icon="folder">
+        Choose folders like "AI Outputs" or "Generations".
+      </Step>
+      <Step title="Enable Sync" icon="refresh-cw">
+        Toggle auto-sync and set frequency (hourly/daily).
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="API Method" icon="code">
+    ```javascript
+    // Use Google Drive API with BosOn webhook
+    const { google } = require('googleapis');
+    const drive = google.drive({ version: 'v3', auth: 'YOUR_OAUTH_TOKEN' });
+
+    const res = await drive.files.list({
+      q: "name contains 'AI-' and mimeType contains 'image'",
+      fields: 'files(id, name, webViewLink)'
+    });
+
+    // Send to BosOn
+    await fetch('https://api.getboson.app/v1/import/drive', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer YOUR_BOSON_TOKEN' },
+      body: JSON.stringify({ files: res.data.files })
+    });
+    ```
+  </Tab>
+</Tabs>
+
+## ChatGPT and Gemini History
+
+Pull images and files from your AI chat histories.
+
+<Steps>
+  <Step title="Connect ChatGPT" icon="message-circle">
+    In BosOn Studio, go to Integrations > ChatGPT. Enter your OpenAI API key (`YOUR_OPENAI_API_KEY`).
+  </Step>
+  <Step title="Select Conversations" icon="search">
+    Choose recent threads or filter by keywords like "generate image".
+  </Step>
+  <Step title="Sync Gemini" icon="google">
+    Repeat for Google Gemini using your Gemini API key.
+  </Step>
+  <Step title="Review Imports" icon="check-circle">
+    Assets appear in your Library under "AI History".
+  </Step>
+</Steps>
+
+<CodeGroup tabs="ChatGPT,cURL">
+  ```javascript
+  // ChatGPT conversation export
+  const openai = new OpenAI({ apiKey: 'YOUR_OPENAI_API_KEY' });
+  const messages = await openai.chat.completions.create({
+    model: 'gpt-4o',
+    messages: [{ role: 'user', content: 'Generate image of perfume bottle' }]
+  });
+  ```
+  ```bash
+  curl -X POST https://api.getboson.app/v1/import/chatgpt \
+    -H "Authorization: Bearer YOUR_BOSON_TOKEN" \
+    -d '{"conversation_id": "chatcmpl-abc123", "api_key": "YOUR_OPENAI_API_KEY"}'
+  ```
+</CodeGroup>
+
+## Desktop and Downloads Folder
+
+Monitor your local folders for new AI outputs.
+
+### Windows Setup
+
+1. Install the BosOn Desktop app from `https://getboson.app/download`.
+2. Select folders like Downloads or custom AI tool outputs.
+3. BosOn scans for new files matching patterns (e.g., `*.png`, `*.mp4`).
+
+<Expandable title="Advanced Folder Rules" default-open="false">
+  Customize with regex:
+
+  ```
+  image: \.(png|jpg|webp)$
+  video: \.(mp4|mov|avi)$
+  ```
+
+  Exclude temp files with `!temp_*`.
+</Expandable>
+
+## Email and WhatsApp Attachments
+
+Import media from emails and messaging apps.
+
+<Tabs>
+  <Tab title="Email (Gmail/Outlook)" icon="mail">
+    Forward emails to `imports@boson.app` or connect IMAP:
+
+    ```bash
+    # IMAP config example
+    server: imap.gmail.com
+    user: your.email@gmail.com
+    password: app-password
+    folders: [INBOX, AI-Generations]
+    ```
+  </Tab>
+  <Tab title="WhatsApp" icon="phone">
+    Export chats via WhatsApp Web > Export Chat > Attach to email > Forward to BosOn.
+  </Tab>
+</Tabs>
+
+## Higgsfield AI Tool Sync
+
+Direct sync with Higgsfield for video generations.
+
+<Board title="Higgsfield Integration Status">
+  <BoardColumn title="Live" color="2" icon="check-circle">
+    <BoardCard title="Video Exports" description="Auto-import 16:9 assets" icon="video" dueDate="2024-12-01" />
+  </BoardColumn>
+  <BoardColumn title="In Progress" color="1" icon="loader">
+    <BoardCard title="Diffuse Sync" description="Real-time model outputs" icon="zap" author="BosOn Team" />
+  </BoardColumn>
+  <BoardColumn title="Planned" color="0" icon="circle-dot">
+    <BoardCard title="Custom Prompts" description="Push prompts back to Higgsfield" createdAt="2024-11-15" />
+  </BoardColumn>
+</Board>
+
+<Callout kind="info">
+  All integrations use secure OAuth or API keys. Revoke access anytime from your BosOn dashboard.
+</Callout>
+
+## Next Steps
+
+Once connected, your Library populates automatically. Use tags and boards to organize by status (Pending, Approved, Live).
+
+<Columns cols={2}>
+  <Card title="Library Management" icon="library" href="/library">
+    Organize and search your assets.
+  </Card>
+  <Card title="Posting Workflow" icon="share-2" href="/posting">
+    Schedule posts directly from BosOn.
+  </Card>
+</Columns>

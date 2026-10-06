@@ -1,0 +1,128 @@
+---
+title: Quickstart
+description: Guide users through requesting early access, downloading the Windows app, and taking first steps like importing assets.
+---
+
+## Prerequisites
+
+<Callout kind="info">
+Before starting, ensure you have:
+- Windows 10 or later
+- An internet connection for downloads and early access
+- A BosOn account (sign up during early access request)
+</Callout>
+
+BosOn organizes your AI-generated images, videos, and assets. Follow these steps to get up and running in minutes.
+
+## Get Started in 5 Steps
+
+<Steps>
+  <Step title="Request Early Access" icon="external-link">
+    Visit the [BosOn early access page](https://getboson.app/#access) and submit your request.
+    
+    Early access opens soon for Windows users. You'll receive an email with your invite link and download instructions.
+  </Step>
+
+  <Step title="Download and Install" icon="download">
+    Once approved, download the Windows installer from your invite email or [BosOn downloads](https://getboson.app/download/windows).
+    
+````bash
+# Run the installer (double-click boson-setup.exe)
+# Follow the on-screen prompts
+# No admin rights required for standard install
+````
+
+    The app installs to `C:\Program Files\BosOn` by default.
+  </Step>
+
+  <Step title="Launch BosOn" icon="play-circle">
+    Open BosOn from your Start menu or desktop shortcut.
+    
+    Sign in with your BosOn account. On first launch, grant folder permissions for imports.
+    
+    <Image
+      src="https://getboson.app/media/boson-64.png"
+      alt="BosOn app launch screen"
+      width="400"
+      height="300"
+    />
+  </Step>
+
+  <Step title="Import Your First Files" icon="upload">
+    Click **Library** in the sidebar, then **Import**.
+    
+    Select files from your computer, Google Drive, or ChatGPT exports.
+    
+    Supported formats: PNG, JPG, MP4, GIF (AI-generated assets work best).
+    
+    <Callout kind="tip">
+      Organize imports by dragging to **Boards** like "Aura Launch" or "Spring Drop".
+    </Callout>
+  </Step>
+
+  <Step title="Create Your Initial Board" icon="settings">
+    In the Library, click **New Board**.
+    
+    Name it (e.g., "My AI Assets"), add a description, and drag in your imported items.
+    
+    View stats: New, All, Status (Pending, Approved, Live).
+  </Step>
+</Steps>
+
+## Example Board Setup
+
+See how a typical BosOn board looks with your assets:
+
+<Board title="Sample Marketing Board">
+  <BoardColumn title="Pending Review" color="0" icon="clock">
+    <BoardCard
+      title="perfume-ad-v1"
+      description="AI-generated perfume still for Meta ads"
+      icon="image"
+      dueDate="2024-12-15"
+    />
+    <BoardCard title="car-night-drive" icon="car" />
+  </BoardColumn>
+  <BoardColumn title="Approved" color="1" icon="check-circle">
+    <BoardCard
+      title="espresso-pour"
+      description="Macro video pour sequence"
+      icon="coffee"
+      author="Studio North"
+    />
+  </BoardColumn>
+  <BoardColumn title="Live" color="2" icon="zap">
+    <BoardCard
+      title="sneaker-burst"
+      description="Dynamic powder burst effect, 63 conversions"
+      icon="shoe"
+    />
+  </BoardColumn>
+</Board>
+
+## Next Steps
+
+<Columns cols={2}>
+  <Card title="Explore Library" icon="book-open" href="/library">
+    Organize, search, and tag your AI assets.
+  </Card>
+  <Card title="Use Studio" icon="tv" href="/studio">
+    Edit and prepare content for posting.
+  </Card>
+  <Card title="Manage Boards" icon="layout" href="/boards">
+    Track status from Pending to Live.
+  </Card>
+  <Card title="Integrations" icon="plug" href="/integrations">
+    Connect Google Drive, ChatGPT, and more.
+  </Card>
+</Columns>
+
+<Expandable title="Troubleshooting Common Issues" default-open="false">
+  - **Import fails**: Check file permissions and format support.
+  - **App won't launch**: Restart Windows or reinstall.
+  - **No early access email**: Check spam folder or request again.
+</Expandable>
+
+<Callout kind="tip">
+  This documentation is a starter template. Customize it for your BosOn workflow.
+</Callout>

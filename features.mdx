@@ -1,0 +1,104 @@
+---
+title: Features
+description: Overview of BosOn's core capabilities for managing AI content, including organization, search, and workflows.
+---
+
+## Overview
+
+BosOn provides a comprehensive library for your AI-generated content. You make pictures and videos with familiar tools, keep everything organized in one place, find items quickly through visual search, and post them when ready. Core features include the Library for item management, status tracking across workflows, Boards for campaign organization, visual content search, and integration with Studio, models, and elements.
+
+<Columns cols={3}>
+  <Card title="Library" icon="database" href="/library">
+    Central hub for all your AI assets with advanced organization.
+  </Card>
+  <Card title="Status Tracking" icon="activity" href="/status">
+    Monitor items from pending to live across campaigns.
+  </Card>
+  <Card title="Boards" icon="layout" href="/boards">
+    Group content by campaigns or projects for easy management.
+  </Card>
+</Columns>
+
+## Library and Item Management
+
+The Library serves as your single source for all AI-generated items. You store images, videos, and elements here, with filters for new additions, all items, or recently added content. Organize thousands of assets without losing track.
+
+<Callout kind="tip">
+  Tag items during upload to enable quick filtering by type or source, such as `Gemini` or `ChatGPT`.
+</Callout>
+
+Use these steps to manage your library effectively:
+
+<Steps>
+  <Step title="Upload Content" icon="upload">
+    Drag and drop files or integrate directly from AI tools.
+  </Step>
+  <Step title="Categorize Items" icon="tag">
+    Assign labels like `Elements` or `BoardsResults`.
+  </Step>
+  <Step title="Export Downloads" icon="download">
+    Generate links for Google Drive or other services.
+  </Step>
+</Steps>
+
+## Status Tracking
+
+Track every item's lifecycle with statuses: Pending, Approved, Live, Paused, Rejected, or Retired. View performance metrics like conversions and revenue directly in the library.
+
+<Board title="Content Workflow Status">
+  <BoardColumn title="Pending" color="0" icon="clock">
+    <BoardCard title="aura-hero-v3" description="Waiting for review" />
+    <BoardCard title="nightdrive-wet" icon="video" />
+  </BoardColumn>
+  <BoardColumn title="Approved" color="1" icon="check-circle">
+    <BoardCard title="espresso-pour" description="Ready for posting" dueDate="2024-12-15" />
+  </BoardColumn>
+  <BoardColumn title="Live" color="2" icon="globe">
+    <BoardCard title="perfume-ad" description="41 conv, $212" author="Studio North" />
+    <BoardCard title="sneaker-burst" description="63 conv, $301" />
+  </BoardColumn>
+  <BoardColumn title="Paused" color="3" icon="pause">
+    <BoardCard title="car-nightdrive" description="9 conv, $88" />
+  </BoardColumn>
+</Board>
+
+## Boards for Campaigns
+
+Create Boards to group items by campaign, such as `Aura launch` or `Spring drop`. Each Board shows item counts and statuses, making it simple to manage project-specific workflows.
+
+<Tabs>
+  <Tab title="Aura Launch" icon="target">
+    24 items across statuses. Focus on high-performers like `perfume-ad`.
+  </Tab>
+  <Tab title="Spring Drop" icon="package">
+    31 items ready for seasonal posting.
+  </Tab>
+  <Tab title="Mara Campaign" icon="users">
+    17 portraits with visual search enabled.
+  </Tab>
+</Tabs>
+
+## Content Search and Discovery
+
+Search your library by visuals, not just keywords. Upload an image to find similar content instantly, powered by AI matching. Filter by status, Board, or performance metrics like conversions `{>20}` or revenue `{>$100}`.
+
+<Expandable title="Advanced Search Tips" default-open="true">
+  Combine filters: `Live` status + `Aura launch` Board + visual similarity to a reference image. Export results as ZIP for quick sharing.
+</Expandable>
+
+## Studio, Models, and Elements
+
+Integrate BosOn with Studio for seamless creation. Access pre-built models and elements directly in your workflow. Generate, tag, and track new content without leaving the platform.
+
+<Columns cols={2}>
+  <Card title="Studio" icon="edit-3" href="/studio" horizontal>
+    Create AI content with integrated tools and auto-save to Library.
+  </Card>
+  <Card title="Models & Elements" icon="layers" href="/models" horizontal>
+    Reuse models like `Higgsfield` and elements for consistent outputs.
+  </Card>
+</Columns>
+
+<Callout kind="info">
+  Start with Library organization, then build Boards for your next campaign. Explore Studio for end-to-end workflows.
+</Callout>

@@ -1,0 +1,183 @@
+---
+title: Settings
+description: App settings, preferences, and advanced configuration options for customizing BosOn.
+---
+
+## Overview
+
+Customize BosOn to fit your workflow with user preferences, status defaults, search options, export settings, and privacy controls. Access the settings panel from the main menu in the app sidebar. Changes apply immediately unless noted otherwise.
+
+<Callout kind="info">
+  Back up your settings before making major changes. Use the export feature described below.
+</Callout>
+
+## Accessing and Updating Settings
+
+Follow these steps to navigate and modify settings.
+
+<Steps>
+  <Step title="Open Settings" icon="settings">
+    Click the gear icon in the top-right corner of the BosOn dashboard.
+  </Step>
+  <Step title="Select Category" icon="list">
+    Choose from tabs: Preferences, Boards & Status, Search, Export, Privacy.
+  </Step>
+  <Step title="Apply Changes" icon="save">
+    Toggle options or enter values, then click `Save`. Restart the app for some advanced settings.
+  </Step>
+</Steps>
+
+## User Preferences
+
+Set default behaviors for your daily use.
+
+<Columns cols={2}>
+  <Card title="Theme & Layout" icon="palette" href="#theme">
+    Switch between light/dark modes and adjust dashboard columns.
+  </Card>
+  <Card title="Notifications" icon="bell" href="#notifications">
+    Enable desktop alerts for new AI generations or status updates.
+  </Card>
+</Columns>
+
+For theme configuration via file:
+
+<CodeGroup tabs="JSON,CLI">
+  ```json
+  {
+    "theme": "dark",
+    "layout": {
+      "columns": 3,
+      "compactView": true
+    }
+  }
+  ```
+  ```bash
+  boson config set theme dark --layout.columns 3
+  ```
+</CodeGroup>
+
+<ParamField path="theme" param-type="string" required="false">
+  Choose `light`, `dark`, or `auto`.
+</ParamField>
+
+## Status and Board Defaults
+
+Define defaults for new items and boards.
+
+<Tabs>
+  <Tab title="Status Defaults" icon="check-circle">
+    Set initial status for uploads: `Pending`, `Draft`, or `Review`.
+
+    ```json
+    {
+      "defaultStatus": "Pending",
+      "autoApprove": false
+    }
+    ```
+  </Tab>
+  <Tab title="Board Defaults" icon="layout">
+    Pre-fill boards for new content.
+
+    <Expandable title="Advanced Board Rules" default-open="false">
+      Create rules like auto-assigning to `Aura launch` based on tags.
+    </Expandable>
+  </Tab>
+</Tabs>
+
+## Search and Tagging Options
+
+Optimize finding your AI content.
+
+| Option | Description | Default |
+|--------|-------------|---------|
+| Fuzzy Search | Enables approximate matching | `true` |
+| Tag Auto-Suggest | Suggests tags from past items | `true` |
+| Max Results | Limits search results | `100` |
+
+<Callout kind="tip">
+  Use tags like `meta-best` or `16:9` for quick filtering.
+</Callout>
+
+## Export and Backup Settings
+
+Manage your data exports.
+
+<Steps>
+  <Step title="Configure Export" icon="download">
+    Select formats: ZIP, Google Drive, or direct links.
+  </Step>
+  <Step title="Schedule Backup" icon="calendar">
+    Set daily/weekly backups to `boson-backups/` folder.
+  </Step>
+</Steps>
+
+Example export config:
+
+````json
+{
+  "export": {
+    "formats": ["zip", "drive"],
+    "autoBackup": "daily",
+    "path": "./exports"
+  }
+}
+````
+
+## Privacy and Data Controls
+
+Control data sharing and retention.
+
+<ParamField body="dataRetention" param-type="number" required="true">
+  Days to keep deleted items (30-365).
+</ParamField>
+
+<ParamField header="shareAnalytics" param-type="boolean" required="false">
+  Opt-in to anonymous usage stats.
+</ParamField>
+
+<Expandable title="Advanced Privacy" default-open="false">
+  ## Data Encryption
+
+  Enable end-to-end encryption for library items.
+
+  ```bash
+  boson privacy enable-encryption --key YOUR_SECRET_KEY
+  ```
+
+  ## Account Deletion
+
+  Permanently delete all data:
+
+  <Callout kind="danger">
+    This action is irreversible.
+  </Callout>
+
+  ```bash
+  boson account delete --confirm
+  ```
+</Expandable>
+
+## Troubleshooting Settings
+
+<ExpandableGroup>
+  <Expandable title="Settings Not Saving" default-open="true">
+    Clear cache: `boson cache clear`. Check file permissions on config dir.
+  </Expandable>
+  <Expandable title="Sync Issues">
+    Restart sync service: `boson sync restart`.
+  </Expandable>
+</ExpandableGroup>
+
+<Board title="Common Settings Tasks">
+  <BoardColumn title="Quick Wins" color="2" icon="check-circle">
+    <BoardCard title="Enable Dark Mode" description="Switch to dark theme for late-night editing" icon="moon" />
+    <BoardCard title="Set Auto-Backup" description="Daily exports to Drive" dueDate="2024-12-31" />
+  </BoardColumn>
+  <BoardColumn title="In Progress">
+    <BoardCard title="Tag Rules" description="Automate tagging for new uploads" icon="tag" />
+  </BoardColumn>
+  <BoardColumn title="Needs Review">
+    <BoardCard title="Privacy Audit" description="Review data sharing options" icon="shield" />
+  </BoardColumn>
+</Board>

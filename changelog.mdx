@@ -1,0 +1,125 @@
+---
+title: Changelog
+description: Version history with 2-3 recent updates, new features, and changes.
+---
+
+## Recent Updates
+
+<Callout kind="info">
+  BosOn releases follow semantic versioning. You receive automatic updates through the app or CLI. Check your dashboard at `https://dashboard.example.com` for the latest version.
+</Callout>
+
+<Update label="2024-11-15" description="v1.3.0" tags={["feature", "improvement"]}>
+  ## New Features
+  - Added **Boards** for organizing AI-generated content by campaigns like "Aura launch" or "Spring drop".
+  - Introduced status filters: Pending, Approved, Live, Paused, Rejected, Retired.
+  - New integrations with Google Drive and ChatGPT for seamless exports.
+
+  ## Improvements
+  - Enhanced search to find items in seconds across 1,284+ assets.
+  - Performance boost for Studio previews, now `<100ms` load times.
+
+  ## Bug Fixes
+  - Fixed download issues for high-res stills like "perfume-640.webp".
+</Update>
+
+<Update label="2024-10-20" description="v1.2.0" tags={["feature", "bugfix"]}>
+  ## New Features
+  - Library now tracks conversions and revenue per item (e.g., 41 conv, $212).
+  - Support for aspect ratios like 16:9 in video elements.
+  - Early access for Windows users with native app download.
+
+  ## Bug Fixes
+  - Resolved pausing issues for ads like "nightdrive-wet-street".
+  - Fixed metadata sync for Gemini-generated portraits.
+
+  ## Improvements
+  - Better mobile responsiveness in the web app.
+</Update>
+
+<Update label="2024-09-25" description="v1.1.0" tags={["breaking", "feature"]}>
+  ## Breaking Changes
+  - Updated API endpoint from `/v1/library` to `/v2/assets` for better scalability. Update your integrations.
+
+  ## New Features
+  - Elements tab for quick access to 9+ reusable AI components.
+  - Showreel viewer for previewing content before posting.
+
+  ## Bug Fixes
+  - Corrected credit tracking (now shows 1,240 accurately).
+</Update>
+
+## How to Upgrade
+
+Follow these steps to ensure you run the latest BosOn version.
+
+<Steps>
+  <Step title="Check Your Version" icon="package">
+    Open the BosOn app or run the CLI command.
+    
+````bash
+boson --version
+````
+  </Step>
+  
+  <Step title="Update CLI" icon="download">
+    <Tabs>
+      <Tab title="npm" icon="npm">
+````bash
+npm update @boson/cli
+````
+      </Tab>
+      <Tab title="Windows" icon="monitor">
+        Download the latest from `https://getboson.app/download`.
+      </Tab>
+    </Tabs>
+  </Step>
+  
+  <Step title="Restart App" icon="refresh-cw">
+    Restart BosOn Studio to apply changes. Verify in settings.
+  </Step>
+</Steps>
+
+<CodeGroup tabs="CLI,App">
+````bash
+# Update all assets after upgrade
+boson sync --all
+````
+
+```json
+{
+  "version": "1.3.0",
+  "updated": true
+}
+```
+</CodeGroup>
+
+## Upcoming Roadmap
+
+Track future enhancements visually.
+
+<Board title="BosOn Q4 Roadmap">
+  <BoardColumn title="Planned" color="0" icon="calendar">
+    <BoardCard title="Mobile App" description="iOS and Android early access" icon="smartphone" dueDate="2024-12-15" />
+    <BoardCard title="Webhook Support" description="Real-time notifications" icon="zap" />
+  </BoardColumn>
+  <BoardColumn title="In Progress" color="1" icon="loader">
+    <BoardCard title="Advanced Search" description="AI-powered content discovery" icon="search" author="Engineering" />
+  </BoardColumn>
+  <BoardColumn title="Next" color="2" icon="check-circle">
+    <BoardCard title="Post Scheduler" description="Automate publishing" createdAt="2024-11-10" />
+  </BoardColumn>
+</Board>
+
+<Callout kind="tip">
+  Request features on GitHub or join early access at `https://getboson.app/#access`.
+</Callout>
+
+<Columns cols={2}>
+  <Card title="Quickstart" icon="book-open" href="/quickstart">
+    Get started with BosOn Library.
+  </Card>
+  <Card title="Integrations" icon="plug" href="/integrations" horizontal>
+    Connect your AI tools.
+  </Card>
+</Columns>
